@@ -18,8 +18,6 @@ struct queueNode
 // kiểm tra điểm có tồn tại ko
 bool isValid(int row, int col)
 {
-	// return true if row number and column number
-	// is in range
 	return (row >= 0) && (row < ROW) &&
 		   (col >= 0) && (col < COL);
 }
@@ -29,10 +27,11 @@ int colNum[] = {0, -1, 1, 0};
 
 int BFS(int mat[][COL], Point src, Point dest)
 {
-
-	if (!mat[src.x][src.y] || !mat[dest.x][dest.y])
+	// nếu 1 trong 2 điểm = 0 thì return -1
+	if (mat[src.x][src.y] == 0 || mat[dest.x][dest.y] == 0)
 		return -1;
 
+	// khởi tạo visited để kiểm tra true false, đi qua rồi thì = true
 	bool visited[ROW][COL];
 	memset(visited, false, sizeof visited);
 
